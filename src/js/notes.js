@@ -1,3 +1,8 @@
+// notes.js
+// This is where the notes are handled, it may not look the cleanest, but it works!
+// This project was made for HackClub's Stardance Challenge.
+// nbur21wx
+
 var sidebar = document.querySelector("#sidebar");
 var content = [
     {
@@ -13,8 +18,10 @@ var content = [
         content: `<h1 class="text-xl">This is a test of another note</h1>`
     }
 ];
+// TODO: Make the notes be stored in local browser storage
 
 function setNotesContent(index) {
+    // TODO: Make the notes editable
     var notesContent = document.querySelector("#notesContent");
     notesContent.innerHTML = content[index].content;
 }
@@ -45,3 +52,5 @@ function addToSidebar(index) {
 for (let i = 0; i < content.length; i++) {
   addToSidebar(i);
 }
+
+// TODO: Allow for user note creation and deletion

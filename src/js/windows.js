@@ -1,6 +1,9 @@
+// windows.js
+// This is where all of the windows are handled, it's a mess, but it works. (somehow)
+// This project was made for HackClub's Stardance Challenge.
+// nbur21wx
+
 var biggestIndex = 1;
-var welcomeScreen = document.querySelector("#welcome");
-var welcomeScreenOpen = document.querySelector("#welcomeopen");
 var topBar = document.querySelector("#top");
 
 function dragElement(element) {
@@ -102,7 +105,3 @@ function initializeWindow(elementName) {
 
 initializeWindow("welcome");
 initializeWindow("notes");
-
-welcomeScreenOpen.addEventListener("click", function() {
-    openWindow(welcomeScreen);
-});
