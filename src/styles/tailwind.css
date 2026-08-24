@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+
+@theme {
+    --animate-window-open: window-open 200ms cubic-bezier(0, 0.67, 0, 1);
+    @keyframes window-open {
+        0% {
+            transform: scale(50%);
+            filter: blur(10px);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(100%);
+            filter: blur(0px);
+            opacity: 1;
+        }
+    }
+    --animate-window-close: window-close 200ms cubic-bezier(1, 0, 1, 0.67);
+    @keyframes window-close {
+        0% {
+            transform: scale(100%);
+            filter: blur(0px);
+            opacity: 1;
+        }
+        90% {
+            transform: scale(50%);
+            filter: blur(10px);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(50%);
+            filter: blur(10px);
+            opacity: 0;
+        }
+    }
+}
