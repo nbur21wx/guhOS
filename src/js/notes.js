@@ -22,6 +22,7 @@ function addToSidebar(index) {
     newButton.classList.add("pb-1");
     newButton.classList.add("pt-1");
     newButton.classList.add("w-full");
+    newButton.classList.add("cursor-pointer");
     newButton.innerHTML = `
         <p class="text-amber-300 m-0 text-left">
             ${note.title}
