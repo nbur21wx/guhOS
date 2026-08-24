@@ -6,6 +6,11 @@ var content = [
         content: `<p>Hey! Thanks for checking out guhOS!</p>
         Suppose I should tell you a little bit about myself...
         `
+    },
+    {
+        title: "Note 2",
+        date: "08/24/2026 @ 2:06 PM",
+        content: `<h1 class="text-xl">This is a test of another note</h1>`
     }
 ];
 
