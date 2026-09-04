@@ -220,7 +220,6 @@ function getNotes() {
             content = JSON.parse(localStorage.getItem("_nbur21wx_guhOSdata_notesContent"));
         }
     } else {
-        console.log("[Notes] Local storage isn't available. Default data will be used.");
         content = contentTemplate;
     }
 }
