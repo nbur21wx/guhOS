@@ -6,6 +6,7 @@
 var sidebar = document.querySelector("#sidebar");
 var notesContent = document.querySelector("#notesContent");
 var currentIndex = null;
+var localStorageAvailable = false;
 
 var notesRename = document.querySelector("#notesRename");
 var notesDelete = document.querySelector("#notesDelete");
@@ -21,7 +22,7 @@ var confirmOverlayInner = document.querySelector("#notesConfirmOverlayInner");
 var confirmYes = document.querySelector("#notesConfirmYes");
 var confirmNo = document.querySelector("#notesConfirmNo");
 
-var content = [
+var contentTemplate = [
     {
         title: "Hey!",
         date: "08/24/2026, 4:14:32 AM",
@@ -35,6 +36,8 @@ var content = [
         content: `<h1 class="text-xl">This is a test of another note</h1>`
     }
 ];
+
+var content = null;
 
 function closeConfirmOverlay() {
     confirmOverlay.classList.remove("animate-fade-in");
@@ -89,6 +92,7 @@ function setNotesContent(index) {
 function saveCurrentEdit() {
     if (currentIndex !== null) {
         content[currentIndex].content = notesContent.innerHTML;
+        saveNotes();
     }
 }
 
@@ -102,6 +106,7 @@ function createNote() {
     });
     renderSidebar();
     setNotesContent(content.length - 1);
+    saveNotes();
 }
 
 function deleteNote() {
@@ -130,6 +135,7 @@ function performDelete() {
         </div>
     `;
     closeConfirmOverlay();
+    saveNotes();
 }
 
 function openRename() {
@@ -149,6 +155,7 @@ function saveRename() {
         renderSidebar();
     }
     closeRenameOverlay();
+    saveNotes();
 }
 
 confirmYes.addEventListener("click", performDelete);
@@ -172,6 +179,58 @@ notesContent.addEventListener("input", saveCurrentEdit);
 document.querySelector("#notesNew").addEventListener("click", createNote);
 document.querySelector("#notesDelete").addEventListener("click", deleteNote);
 
-renderSidebar();
+
 
 // TODO: persist `content` to localStorage
+
+// this is a very rough implementation of browser storage and it may be very scuffed.
+
+// function from mozilla docs
+function storageAvailable(type) {
+    let storage;
+    try {
+        storage = window[type];
+        const x = "__storage_test__";
+        storage.setItem(x,x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return (
+            e instanceof DOMException && 
+            e.name === "QuotaExceededError" &&
+            storage &&
+            storage.length !== 0
+        );
+    }
+}
+
+if (storageAvailable("localStorage")) {
+    localStorageAvailable = true;
+} else {
+    localStorageAvailable = false;
+    window.alert("localStorage not available. Notes will not save.");
+}
+
+function getNotes() {
+    if (localStorageAvailable === true) {
+        if (localStorage.getItem("_nbur21wx_guhOSdata_notesContent") === null) {
+            localStorage.setItem("_nbur21wx_guhOSdata_notesContent", JSON.stringify(contentTemplate));
+            content = JSON.parse(localStorage.getItem("_nbur21wx_guhOSdata_notesContent"));
+        } else {
+            content = JSON.parse(localStorage.getItem("_nbur21wx_guhOSdata_notesContent"));
+        }
+    } else {
+        console.log("[Notes] Local storage isn't available. Default data will be used.");
+        content = contentTemplate;
+    }
+}
+
+function saveNotes() {
+    if (localStorageAvailable === true) {
+        localStorage.setItem("_nbur21wx_guhOSdata_notesContent", JSON.stringify(content));
+    }
+}
+
+getNotes();
+
+renderSidebar();
