@@ -49,31 +49,31 @@
         </div>
         <div id="notes" class="absolute border-solid w-xl rounded-xl border-4 bg-amber-200 dark:bg-amber-950 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-clip hidden shadow-2xl animate-window-open">
             <div id="notesheader" class="flex justify-between min-w-fit h-fit bg-amber-300 cursor-grab active:cursor-grabbing">
-                <button id="notesNew" class="text-amber-900 text-sm cursor-pointer px-2">+ New</button>
+                <button id="notesNew" class="text-amber-900 hover:text-amber-800 active:text-amber-950 active:scale-95 transition-all text-sm cursor-pointer px-2">+ New</button>
                 <p>Notes</p>
                 <div id="notesclose" class="w-4 h-4 cursor-pointer bg-red-500 rounded-full border mt-1 mr-1"></div>
             </div>
-            <div id="notesConfirmOverlay" class="hidden absolute inset-0 z-10 bg-black/70 flex items-center justify-center animate-fade-in animate-fade-out">
-                <div id="notesConfirmOverlayInner" class="bg-amber-200 dark:bg-amber-950 border-2 border-amber-600 rounded-lg p-5 w-64 text-center">
+            <div id="notesConfirmOverlay" class="hidden absolute inset-0 z-10 bg-black/30 flex items-center justify-center backdrop-blur-xs">
+                <div id="notesConfirmOverlayInner" class="bg-amber-200 dark:bg-amber-950 border-2 border-amber-600 rounded-lg p-5 w-64 text-center shadow-lg">
                     <p class="text-amber-900 dark:text-amber-300 mb-4">Are you sure you want to delete this note?</p>
                     <div class="flex gap-2 justify-center">
-                        <button id="notesConfirmYes" class="bg-red-600 hover:bg-red-500 text-white text-sm px-3 py-1.5 rounded-md cursor-pointer">Yes</button>
-                        <button id="notesConfirmNo" class="bg-amber-800 hover:bg-amber-700 text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer">No</button>
+                        <button id="notesConfirmYes" class="bg-red-600 hover:bg-red-500 active:bg-red-700 active:scale-95 transition-all text-white text-sm px-3 py-1.5 rounded-md cursor-pointer shadow-lg">Yes</button>
+                        <button id="notesConfirmNo" class="bg-amber-800 hover:bg-amber-700 active:bg-amber-900 active:scale-95 transition-all text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer shadow-lg">No</button>
                     </div>
                 </div>
             </div>
-            <div id="notesRenameOverlay" class="hidden absolute inset-0 z-10 bg-black/70 flex items-center justify-center animate-fade-in animate-fade-out">
-                <div id="notesRenameOverlayInner" class="bg-amber-200 dark:bg-amber-950 border-2 border-amber-600 rounded-lg p-5 w-64 text-center">
+            <div id="notesRenameOverlay" class="hidden absolute inset-0 z-10 bg-black/30 flex items-center justify-center backdrop-blur-xs">
+                <div id="notesRenameOverlayInner" class="bg-amber-200 dark:bg-amber-950 border-2 border-amber-600 rounded-lg p-5 w-64 text-center shadow-lg">
                     <p class="text-amber-900 dark:text-amber-300 mb-2">Rename note</p>
                     <input id="notesRenameInput" type="text" class="w-full mb-4 px-2 py-1 rounded-md bg-amber-100 dark:bg-amber-900 text-amber-900 dark:text-amber-300 outline-none border border-amber-600" />
                     <div class="flex gap-2 justify-center">
-                        <button id="notesRenameSave" class="bg-amber-700 hover:bg-amber-600 text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer">Save</button>
-                        <button id="notesRenameCancel" class="bg-amber-800 hover:bg-amber-700 text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer">Cancel</button>
+                        <button id="notesRenameSave" class="bg-amber-700 hover:bg-amber-600 active:bg-amber-800 active:scale-95 transition-all text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer shadow-lg">Save</button>
+                        <button id="notesRenameCancel" class="bg-amber-800 hover:bg-amber-700 active:bg-amber-900 active:scale-95 transition-all text-amber-100 text-sm px-3 py-1.5 rounded-md cursor-pointer shadow-lg">Cancel</button>
                     </div>
                 </div>
             </div>
             <div class="w-full h-64 flex">
-                <div id="sidebar" class="bg-amber-900 w-73 mr-4 p-4 *:hover:bg-amber-800 *:active:bg-amber-950 *:rounded-md overflow-scroll"></div>
+                <div id="sidebar" class="bg-amber-900 w-73 mr-4 p-4 *:hover:bg-amber-800 *:active:bg-amber-950 *:rounded-md *:transition-all overflow-scroll"></div>
                 <div id="notesContentWrap" class="w-full h-64 flex flex-col">
                     <div id="notesContent" contenteditable="false" class="block w-full h-64 p-3 bg-amber-950 text-amber-300 resize-none outline-none overflow-auto">
                         <div class="w-full h-full relative grid grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr]">
@@ -83,8 +83,8 @@
                             </div>
                         </div>
                     </div>
-                    <button id="notesRename" class="hidden absolute bottom-3 right-20 bg-amber-700 hover:bg-amber-600 text-amber-100 text-xs px-3 py-1.5 rounded-full shadow-lg cursor-pointer">Rename</button>
-                    <button id="notesDelete" class="hidden absolute bottom-3 right-3 bg-red-600 hover:bg-red-500 text-white text-xs px-3 py-1.5 rounded-full shadow-lg cursor-pointer">Delete</button>
+                    <button id="notesRename" class="hidden absolute bottom-3 right-20 bg-amber-700 hover:bg-amber-600 active:bg-amber-800 active:scale-95 transition-all text-amber-100 text-xs px-3 py-1.5 rounded-full shadow-lg cursor-pointer">Rename</button>
+                    <button id="notesDelete" class="hidden absolute bottom-3 right-3 bg-red-600 hover:bg-red-500 active:bg-red-700 active:scale-95 transition-all text-white text-xs px-3 py-1.5 rounded-full shadow-lg cursor-pointer">Delete</button>
                 </div>
             </div>
         </div>

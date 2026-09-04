@@ -43,21 +43,26 @@
     @keyframes fade-in {
         0% {
             opacity: 0;
+            backdrop-filter: blur(0px);
         }
         100% {
             opacity: 1;
+            backdrop-filter: blur(4px);
         }
     }
     --animate-fade-out: fade-out 200ms cubic-bezier(0,-0.01,.36,0);
     @keyframes fade-out {
         0% {
             opacity: 1;
+            backdrop-filter: blur(4px);
         }
         90% {
             opacity: 0;
+            backdrop-filter: blur(0px);
         }
         100% {
             opacity: 0;
+            backdrop-filter: blur(0px);
         }
     }
 }
