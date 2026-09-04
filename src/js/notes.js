@@ -62,7 +62,7 @@ function renderSidebar() {
     sidebar.innerHTML = "";
     content.forEach((note, index) => {
         var newButton = document.createElement("button");
-        newButton.classList.add("pl-3", "pr-3", "pb-1", "pt-1", "w-full", "cursor-pointer");
+        newButton.classList.add("pl-3", "pr-3", "pb-1", "pt-1", "w-full", "cursor-pointer", "transition-all", "rounded-md");
         if (index === currentIndex) {
             newButton.classList.add("bg-amber-700");
         }
